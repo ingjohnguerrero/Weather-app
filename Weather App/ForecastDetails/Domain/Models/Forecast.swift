@@ -6,6 +6,7 @@
 //
 
 struct Forecast {
+    let name: String
     let temp: Float
     let feels_like: Float
     let temp_min: Float

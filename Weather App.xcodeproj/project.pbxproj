@@ -75,10 +75,10 @@
 		727FE7B52DFF2BB3000A3F49 = {
 			isa = PBXGroup;
 			children = (
+				727FE7BF2DFF2BB3000A3F49 /* Products */,
 				727FE7C02DFF2BB3000A3F49 /* Weather App */,
 				727FE7CE2DFF2BB5000A3F49 /* Weather AppTests */,
 				727FE7D82DFF2BB5000A3F49 /* Weather AppUITests */,
-				727FE7BF2DFF2BB3000A3F49 /* Products */,
 			);
 			sourceTree = "<group>";
 		};

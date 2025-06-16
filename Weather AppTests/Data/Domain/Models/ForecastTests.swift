@@ -14,6 +14,7 @@ final class ForecastTests: XCTestCase {
     override func setUp() {
         weather = [.init(id: 500, main: "Rain", description: "light rain", icon: "10d")]
         sut = .init(
+            name: "Zocca",
             temp: 20.0,
             feels_like: 21.0,
             temp_min: 8,

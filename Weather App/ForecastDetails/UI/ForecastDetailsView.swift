@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct ForecastDetailsView: View {
-    @State private var city: String = "San Francisco"
+    @State var forecast: Forecast? = nil
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 Text("Current Weather Forecast:")
                     .font(.largeTitle)
                     .padding()
-                    .navigationTitle(city)
+                    .navigationTitle(forecast?.name ?? "Weather Forecast")
                 VStack(alignment: .center) {
-                    Text("Sunny")
+                    Text(forecast?.weather.first?.main ?? "Unknown Weather")
                         .font(.title)
                     Image(systemName: "cloud.sun.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                    Text("Really sunny day")
+                    Text(forecast?.weather.first?.description ?? "No Description")
                         .font(.title2)
                 }
                 .padding(.top, 20)
@@ -32,42 +32,42 @@ struct ForecastDetailsView: View {
                     HStack(){
                         Text("Temp")
                         Spacer()
-                        Text("20 ºC")
+                        Text("\(forecast?.temp ?? 0) ºC")
                     }
                     HStack{
                         Text("Feels like")
                         Spacer()
-                        Text("21 ºC")
+                        Text("\(forecast?.feels_like ?? 0) ºC")
                     }
                     HStack{
                         Text("Temorature Min")
                         Spacer()
-                        Text("8 ºC")
+                        Text("\(forecast?.temp_min ?? 0) ºC")
                     }
                     HStack{
                         Text("Temperature Max")
                         Spacer()
-                        Text("25 ºC")
+                        Text("\(forecast?.temp_max ?? 0) ºC")
                     }
                     HStack{
                         Text("Pressure")
                         Spacer()
-                        Text("1013 hPa")
+                        Text("\(forecast?.pressure ?? 0) hPa")
                     }
                     HStack{
                         Text("Humidity")
                         Spacer()
-                        Text("60%")
+                        Text("\(forecast?.humidity ?? 0) %")
                     }
                     HStack{
                         Text("Sea Level")
                         Spacer()
-                        Text("1013 hPa")
+                        Text("\(forecast?.sea_level ?? 0) hPa")
                     }
                     HStack{
                         Text("Ground level")
                         Spacer()
-                        Text("950 hPa")
+                        Text("\(forecast?.grnd_level ?? 0) hPa")
                     }
                 }
                 .padding(.horizontal, 40)
@@ -77,5 +77,6 @@ struct ForecastDetailsView: View {
 }
 
 #Preview {
-    ForecastDetailsView()
+    let forecast = try! JSONLoader.loadMock(.forecastByLatLngMock, as: OpenWeatherForecastDTO.self)
+    ForecastDetailsView(forecast: OpenWeatherForecastMapper().map(forecast) )
 }
