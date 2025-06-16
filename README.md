@@ -22,23 +22,28 @@ This project is a Swift practice application that demonstrates how to fetch and 
   - `ContentView.swift` — Main content view
   - `Weather_AppApp.swift` — App entry point
   - `Assets.xcassets/` — App assets (icons, colors)
-- `ForecastDetails/` — Forecast feature module
-  - `Data/`
-    - `APIs/OpenWeatherMap/` — DTOs for OpenWeather API responses
-      - `OpenWeatherForecastDTO.swift`
-      - `OpenWeatherForecastMainDTO.swift`
-      - `OpenWeatherForecastWeatherDTO.swift`
+  - `Data/` — Data layer
+    - `Mappers/` — Data mapping logic
+      - `ForecastMapper.swift`, `WeatherMapper.swift`
+    - `Mocks/` — Mock data for testing
+      - `forecast_by_lat_lng_mock.json`
+      - `Helpers/JSONLoader.swift` — Utility for loading JSON mocks
+    - `Providers/OpenWeatherMap/` — OpenWeather API DTOs and mappers
+      - `OpenWeatherForecastDTO.swift`, `OpenWeatherForecastMainDTO.swift`, `OpenWeatherForecastWeatherDTO.swift`, `OpenWeatherForecastMapper.swift`
   - `Domain/Models/` — Domain models (e.g., `Forecast.swift`)
-  - `UI/ForecastDetailsView.swift` — Forecast details UI
+  - `Presentation/Screens/ForecastDetails/` — UI and ViewModel for forecast details
+    - `ForecastDetailsView.swift`, `ForecastDetailsViewModel.swift`
 - `Weather AppTests/` — Unit tests
   - `Weather_AppTests.swift` — Main app tests
-  - `Data/APIs/OpenWeatherMap/` — API DTO tests
-    - `OpenWeatherForecastDTOTests.swift`
-  - `Domain/Models/` — Domain model tests
-    - `ForecastTests.swift`
+  - `Data/` — Data layer tests
+    - `Domain/Models/ForecastTests.swift`
+    - `Mocks/Helpers/JSONLoaderTests.swift`
+    - `Providers/OpenWeatherMap/` — API DTO and mapper tests
+      - `OpenWeatherForecastDTOTests.swift`, `OpenWeatherForecastMapperTests.swift`
+    - `Presentation/Screens/ForecastDetailsViewModelTests.swift`
 - `Weather AppUITests/` — UI tests
-  - `Weather_AppUITests.swift`
-  - `Weather_AppUITestsLaunchTests.swift`
+  - `Weather_AppUITests.swift`, `Weather_AppUITestsLaunchTests.swift`
+- `Weather App.xcodeproj/` — Xcode project files
 - `LICENSE` — Project license
 - `README.md` — Project documentation
 
