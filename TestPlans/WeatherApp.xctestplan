@@ -1,0 +1,40 @@
+{
+  "configurations" : [
+    {
+      "id" : "EA0D74B0-4B73-4BF7-B125-24F8A35FA8A3",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Weather App.xcodeproj",
+      "identifier" : "727FE7BD2DFF2BB3000A3F49",
+      "name" : "Weather App"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "skippedTests" : [
+        "OWMWeatherServiceTests"
+      ],
+      "target" : {
+        "containerPath" : "container:Weather App.xcodeproj",
+        "identifier" : "727FE7CA2DFF2BB5000A3F49",
+        "name" : "Weather AppTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Weather App.xcodeproj",
+        "identifier" : "727FE7D42DFF2BB5000A3F49",
+        "name" : "Weather AppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -31,12 +31,20 @@ enum ForecastDetailsState: Equatable{
 @MainActor
 class ForecastDetailsViewModel: ObservableObject {
     @Published private(set) var state: ForecastDetailsState = .idle
+    private let service: WeatherService!
+
+    init(service: WeatherService = MockWeatherService()) {
+        self.service = service
+    }
 
     func loadForecast() async {
         state = .loading
         do {
-            let forecast = try JSONLoader.loadMock(.forecastByLatLngMock, as: OpenWeatherForecastDTO.self)
-            state = .success(OpenWeatherForecastMapper().map(forecast))
+            let forecast = try await service.fetchForecast(
+                forLat: 0.0,
+                lon: 0.0
+            )
+            state = .success(forecast)
         } catch let error {
             state = .error(error.localizedDescription)
         }

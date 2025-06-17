@@ -26,5 +26,18 @@ final class ForecastDetailsViewModelTests: XCTestCase {
             XCTFail("Expected success state with forecast, but got \(sut.state)")
         }
     }
+
+    // Add an error ForecastDetailsState test
+    func testLoadForecastWithError() async {
+        sut = ForecastDetailsViewModel(
+            service: MockWeatherService(returnsError: true)
+        )
+        await sut.loadForecast()
+        if case .error(let errorMessage) = sut.state {
+            XCTAssertFalse(errorMessage.isEmpty, "Expected an error message but got empty string")
+        } else {
+            XCTFail("Expected error state, but got \(sut.state)")
+        }
+    }
 }
 
