@@ -33,6 +33,9 @@
             reference = "container:TestPlans/WeatherApp.xctestplan"
             default = "YES">
          </TestPlanReference>
+         <TestPlanReference
+            reference = "container:TestPlans/WeatherAppIntegration.xctestplan">
+         </TestPlanReference>
       </TestPlans>
       <Testables>
          <TestableReference

@@ -1,0 +1,43 @@
+{
+  "configurations" : [
+    {
+      "id" : "BAF782F6-B312-4D87-ACAB-ADD69B45F8DB",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "ForecastDetailsViewModelTests",
+        "ForecastDetailsViewModelTests\/testInitialState()",
+        "ForecastDetailsViewModelTests\/testLoadForecastWithError()",
+        "ForecastDetailsViewModelTests\/testLoadForecastWithReturnsForecast()",
+        "ForecastTests",
+        "ForecastTests\/testInitInstanceIsNotNil()",
+        "JSONLoaderTests",
+        "MockWeatherServiceTests",
+        "MockWeatherServiceTests\/testFetchWeatherData()",
+        "MockWeatherServiceTests\/testInitialization()",
+        "OpenWeatherForecastDTOTests",
+        "OpenWeatherForecastDTOTests\/testDecodeObjectFromJSONStringReturnsValidDTO()",
+        "OpenWeatherForecastMapperTests",
+        "OpenWeatherForecastMapperTests\/testForecastMapperReturnsValidForecast()",
+        "Weather_AppTests",
+        "Weather_AppTests\/testExample()",
+        "Weather_AppTests\/testPerformanceExample()"
+      ],
+      "target" : {
+        "containerPath" : "container:Weather App.xcodeproj",
+        "identifier" : "727FE7CA2DFF2BB5000A3F49",
+        "name" : "Weather AppTests"
+      }
+    }
+  ],
+  "version" : 1
+}
