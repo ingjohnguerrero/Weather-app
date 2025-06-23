@@ -13,11 +13,16 @@ final class OWMWeatherServiceTests: XCTestCase {
 
     override func setUpWithError() throws {
         super.setUp()
-        sut = OWMWeatherService(apiKey: "")
+        sut = OWMWeatherService()
     }
 
     func testInitNotNil() {
         XCTAssertNotNil(sut)
+    }
+
+    func testFetchForecastWithValidApiKeyReturnsValidForecast() async throws {
+        let forecast = try? await sut.fetchForecast(forLat: 37.7749, lon: -122.4194)
+        XCTAssertNotNil(forecast)
     }
 
 }
