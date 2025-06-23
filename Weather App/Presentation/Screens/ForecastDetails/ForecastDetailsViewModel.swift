@@ -33,7 +33,7 @@ class ForecastDetailsViewModel: ObservableObject {
     @Published private(set) var state: ForecastDetailsState = .idle
     private let service: WeatherService!
 
-    init(service: WeatherService = MockWeatherService()) {
+    init(service: WeatherService = OWMWeatherService()) {
         self.service = service
     }
 
@@ -41,8 +41,8 @@ class ForecastDetailsViewModel: ObservableObject {
         state = .loading
         do {
             let forecast = try await service.fetchForecast(
-                forLat: 0.0,
-                lon: 0.0
+                forLat: 37.7749,
+                lon: -122.4194
             )
             state = .success(forecast)
         } catch let error {
