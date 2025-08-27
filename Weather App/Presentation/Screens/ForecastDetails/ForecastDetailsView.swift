@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ForecastDetailsView: View {
-    @ObservedObject var viewModel = ForecastDetailsViewModel()
+    @State var viewModel = ForecastDetailsViewModel()
     var body: some View {
         ScrollView {
             switch viewModel.state {

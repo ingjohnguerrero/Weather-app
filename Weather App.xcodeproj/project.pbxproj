@@ -32,22 +32,9 @@
 		72E931462E019C6100BF9D39 /* WeatherApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WeatherApp.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		723006372E08E3A1005CCE74 /* Exceptions for "Weather App" folder in "Weather App" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Weather-App-Info.plist",
-			);
-			target = 727FE7BD2DFF2BB3000A3F49 /* Weather App */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		727FE7C02DFF2BB3000A3F49 /* Weather App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				723006372E08E3A1005CCE74 /* Exceptions for "Weather App" folder in "Weather App" target */,
-			);
 			path = "Weather App";
 			sourceTree = "<group>";
 		};

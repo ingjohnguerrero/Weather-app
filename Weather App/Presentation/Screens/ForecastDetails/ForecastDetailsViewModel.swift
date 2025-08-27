@@ -28,10 +28,10 @@ enum ForecastDetailsState: Equatable{
     }
 }
 
-@MainActor
-class ForecastDetailsViewModel: ObservableObject {
-    @Published private(set) var state: ForecastDetailsState = .idle
-    private let service: WeatherService!
+@Observable
+class ForecastDetailsViewModel {
+    private(set) var state: ForecastDetailsState = .idle
+    @ObservationIgnored private let service: WeatherService!
 
     init(service: WeatherService = OWMWeatherService()) {
         self.service = service
