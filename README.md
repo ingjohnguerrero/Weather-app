@@ -8,6 +8,10 @@ This project is a Swift practice application that demonstrates how to fetch and 
 - Displays weather information in a simple SwiftUI interface
 - Demonstrates networking, JSON parsing, and UI updates in Swift
 
+| **Mobile Interface** |
+|------------|
+|<img src="https://github.com/user-attachments/assets/0538b7ee-ee3e-4261-82e4-1f083ad145c6" alt="iPhone 16 Pro Simulator Screenshot" width="300"><br><sub>iPhone 16 Pro Simulator View</sub> |
+
 ## Getting Started
 
 1. Clone the repository.
