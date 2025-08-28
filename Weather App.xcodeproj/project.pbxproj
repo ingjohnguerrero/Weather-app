@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7203DDDE2E5FD7BA00E1F20D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7203DDDD2E5FD7BA00E1F20D /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		727FE7CC2DFF2BB5000A3F49 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7203DDDD2E5FD7BA00E1F20D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		723006352E08E0E8005CCE74 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		727FE7BE2DFF2BB3000A3F49 /* Weather App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		727FE7CB2DFF2BB5000A3F49 /* Weather AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Weather AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +91,7 @@
 		727FE7B52DFF2BB3000A3F49 = {
 			isa = PBXGroup;
 			children = (
+				7203DDDD2E5FD7BA00E1F20D /* README.md */,
 				723006322E08E00D005CCE74 /* XCConfigs */,
 				727FE7BF2DFF2BB3000A3F49 /* Products */,
 				72BCB22D2E019D19009483DB /* TestPlans */,
@@ -234,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7203DDDE2E5FD7BA00E1F20D /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
