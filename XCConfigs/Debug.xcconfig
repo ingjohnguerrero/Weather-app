@@ -1,0 +1,11 @@
+//
+//  Debug.xcconfig
+//  Weather App
+//
+//  Created by John Guerrero on 6/22/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+OPEN_WEATHER_MAP_KEY = 
