@@ -26,30 +26,53 @@ This project is a Swift practice application that demonstrates how to fetch and 
   - `ContentView.swift` — Main content view
   - `Weather_AppApp.swift` — App entry point
   - `Assets.xcassets/` — App assets (icons, colors)
-  - `Data/` — Data layer
-    - `Mappers/` — Data mapping logic
+  - `Data/`
+    - `Mappers/`
       - `ForecastMapper.swift`, `WeatherMapper.swift`
-    - `Mocks/` — Mock data for testing
-      - `forecast_by_lat_lng_mock.json`
-      - `Helpers/JSONLoader.swift` — Utility for loading JSON mocks
-    - `Providers/OpenWeatherMap/` — OpenWeather API DTOs and mappers
-      - `OpenWeatherForecastDTO.swift`, `OpenWeatherForecastMainDTO.swift`, `OpenWeatherForecastWeatherDTO.swift`, `OpenWeatherForecastMapper.swift`
-  - `Domain/Models/` — Domain models (e.g., `Forecast.swift`)
-  - `Presentation/Screens/ForecastDetails/` — UI and ViewModel for forecast details
+    - `Providers/`
+      - `Mocks/`
+        - `forecast_by_lat_lng_mock.json`
+        - `Helpers/`
+          - `JSONLoader.swift` — Utility for loading JSON mocks
+        - `Services/`
+          - `MockWeatherService.swift`
+      - `OpenWeatherMap/`
+        - `DTOs/`
+          - `OpenWeatherForecastDTO.swift`, `OpenWeatherForecastMainDTO.swift`, `OpenWeatherForecastWeatherDTO.swift`
+        - `Mappers/`
+          - `OpenWeatherForecastMapper.swift`
+        - `Services/`
+          - `OWMWeatherService.swift`
+  - `Domain/`
+    - `Models/`
+      - `Forecast.swift`
+    - `Services/`
+      - `WeatherService.swift`
+  - `Presentation/Screens/ForecastDetails/`
     - `ForecastDetailsView.swift`, `ForecastDetailsViewModel.swift`
 - `Weather AppTests/` — Unit tests
   - `Weather_AppTests.swift` — Main app tests
-  - `Data/` — Data layer tests
-    - `Domain/Models/ForecastTests.swift`
-    - `Mocks/Helpers/JSONLoaderTests.swift`
-    - `Providers/OpenWeatherMap/` — API DTO and mapper tests
-      - `OpenWeatherForecastDTOTests.swift`, `OpenWeatherForecastMapperTests.swift`
-    - `Presentation/Screens/ForecastDetailsViewModelTests.swift`
+  - `Data/`
+    - `Domain/Models/`
+      - `ForecastTests.swift`
+    - `Providers/Mocks/`
+      - `MockWeatherServiceTests.swift`
+      - `Helpers/JSONLoaderTests.swift`
+    - `Providers/OpenWeatherMap/`
+      - `DTOs/OpenWeatherForecastDTOTests.swift`
+      - `Mappers/OpenWeatherForecastMapperTests.swift`
+      - `Services/OWMWeatherServiceTests.swift`
+  - `Presentation/Screens/ForecastDetailsViewModelTests.swift`
 - `Weather AppUITests/` — UI tests
   - `Weather_AppUITests.swift`, `Weather_AppUITestsLaunchTests.swift`
-- `Weather App.xcodeproj/` — Xcode project files
+- `TestPlans/` — Xcode test plans
+  - `WeatherApp.xctestplan`, `WeatherAppIntegration.xctestplan`
+- `XCConfigs/` — Xcode configuration files
+  - `Debug.xcconfig`
+- `Weather-App-Info.plist` — App info plist
 - `LICENSE` — Project license
 - `README.md` — Project documentation
+- `Weather App.xcodeproj/` — Xcode project files
 
 ## API Reference
 
