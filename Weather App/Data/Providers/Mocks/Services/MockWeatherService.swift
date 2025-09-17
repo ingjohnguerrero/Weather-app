@@ -9,7 +9,7 @@ enum MockError: Error {
     case MockedError
 }
 
-class MockWeatherService: WeatherService {
+actor MockWeatherService: WeatherService {
     let returnsError: Bool
 
     init(returnsError: Bool = false) {
@@ -20,7 +20,7 @@ class MockWeatherService: WeatherService {
         if returnsError {
             throw MockError.MockedError
         }
-        let forecast = try JSONLoader.loadMock(.forecastByLatLngMock, as: OpenWeatherForecastDTO.self)
+        let forecast = try JSONLoader.loadMock(.forecastByLatLonMock, as: OpenWeatherForecastDTO.self)
         return OpenWeatherForecastMapper().map(forecast)
     }
 }

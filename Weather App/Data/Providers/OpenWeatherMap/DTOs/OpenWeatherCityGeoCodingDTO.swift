@@ -12,3 +12,15 @@ struct OpenWeatherCityGeoCodingDTO: Codable {
     let country: String
     let state: String?
 }
+
+extension OpenWeatherCityGeoCodingDTO: CityMapper {
+    func mapToCity() -> City {
+        return City(
+            name: self.name,
+            lat: self.lat,
+            lon: self.lon,
+            country: self.country,
+            state: self.state
+        )
+    }
+}

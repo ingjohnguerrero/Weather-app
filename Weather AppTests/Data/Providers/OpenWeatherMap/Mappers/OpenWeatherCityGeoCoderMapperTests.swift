@@ -10,7 +10,6 @@ import XCTest
 
 final class OpenWeatherCityGeoCoderMapperTests: XCTestCase {
 
-    var sut: OpenWeatherCityGeoCodingMapper!
     var citiesDTO: [OpenWeatherCityGeoCodingDTO]!
     var cities: [City]!
 
@@ -143,12 +142,11 @@ final class OpenWeatherCityGeoCoderMapperTests: XCTestCase {
         } catch {
             XCTFail("Failed to decode JSON: \(error.localizedDescription)")
         }
-        sut = OpenWeatherCityGeoCodingMapper()
     }
 
     func testCitiesMapperReturnsCorrectNumberOfCities() {
         cities = citiesDTO.map({ cityDTO in
-            sut.map(cityDTO)
+            cityDTO.mapToCity()
         })
         XCTAssertEqual(citiesDTO.count, 5)
     }

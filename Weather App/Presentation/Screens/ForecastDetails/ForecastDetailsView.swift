@@ -21,7 +21,6 @@ struct ForecastDetailsView: View {
                     contentView(forecast: forecast)
                 case .error(let description):
                     Text("Error loading forecast: \(description)")
-
             }
         }
         .task {
