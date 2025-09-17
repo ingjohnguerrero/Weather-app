@@ -37,12 +37,12 @@ class ForecastDetailsViewModel {
         self.service = service
     }
 
-    func loadForecast() async {
+    func loadForecast(lat: Float, lon: Float) async {
         state = .loading
         do {
             let forecast = try await service.fetchForecast(
-                forLat: 37.7749,
-                lon: -122.4194
+                forLat: lat,
+                lon: lon
             )
             state = .success(forecast)
         } catch let error {

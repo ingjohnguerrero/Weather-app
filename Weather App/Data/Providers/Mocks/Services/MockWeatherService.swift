@@ -16,7 +16,7 @@ class MockWeatherService: WeatherService {
         self.returnsError = returnsError
     }
 
-    func fetchForecast(forLat lat: Double, lon: Double) async throws -> Forecast {
+    func fetchForecast(forLat lat: Float, lon: Float) async throws -> Forecast {
         if returnsError {
             throw MockError.MockedError
         }

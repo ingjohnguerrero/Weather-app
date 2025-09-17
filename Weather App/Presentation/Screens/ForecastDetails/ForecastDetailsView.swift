@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ForecastDetailsView: View {
+    let lat: Float
+    let lon: Float
     @State var viewModel = ForecastDetailsViewModel()
     var body: some View {
         ScrollView {
@@ -23,7 +25,7 @@ struct ForecastDetailsView: View {
             }
         }
         .task {
-            await viewModel.loadForecast()
+            await viewModel.loadForecast(lat: lat, lon: lon)
         }
     }
 
@@ -58,7 +60,7 @@ struct ForecastDetailsView: View {
                     Text("\(forecast.feels_like) ºC")
                 }
                 HStack{
-                    Text("Temorature Min")
+                    Text("Temperature Min")
                     Spacer()
                     Text("\(forecast.temp_min) ºC")
                 }
@@ -94,6 +96,6 @@ struct ForecastDetailsView: View {
 }
 
 #Preview {
-    let viewModel = ForecastDetailsViewModel()
-    ForecastDetailsView(viewModel: viewModel)
+    let viewModel = ForecastDetailsViewModel(service: MockWeatherService())
+    ForecastDetailsView(lat: 0.0, lon: 0.0, viewModel: viewModel)
 }

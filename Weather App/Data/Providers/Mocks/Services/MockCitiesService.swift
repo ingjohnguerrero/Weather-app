@@ -9,7 +9,7 @@ enum MockCitiesError: Error {
     case MockedError
 }
 
-class MockCitiesService: CitiesService {
+actor MockCitiesService: CitiesService {
     let returnsError: Bool
 
     init(returnsError: Bool = false) {
