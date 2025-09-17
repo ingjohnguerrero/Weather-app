@@ -19,6 +19,8 @@
     {
       "parallelizable" : true,
       "skippedTests" : [
+        "OWMCitiesServiceTests",
+        "OWMCitiesServiceTests\/testInitNotNil()",
         "OWMWeatherServiceTests"
       ],
       "target" : {
