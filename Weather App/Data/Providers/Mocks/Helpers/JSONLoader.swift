@@ -13,7 +13,8 @@ public enum JSONLoaderError: Error {
 }
 
 public enum MockFile: String {
-    case forecastByLatLngMock = "forecast_by_lat_lng_mock"
+    case forecastByLatLonMock = "forecast_by_lat_lng_mock"
+    case citiesLatLonByNameMock = "cities_lat_lon_by_name_mock"
 }
 
 public final class JSONLoader {

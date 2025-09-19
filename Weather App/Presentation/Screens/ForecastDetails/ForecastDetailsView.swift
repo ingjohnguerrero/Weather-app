@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ForecastDetailsView: View {
+    let city: City
     @State var viewModel = ForecastDetailsViewModel()
     var body: some View {
         ScrollView {
@@ -19,11 +20,11 @@ struct ForecastDetailsView: View {
                     contentView(forecast: forecast)
                 case .error(let description):
                     Text("Error loading forecast: \(description)")
-
             }
         }
         .task {
-            await viewModel.loadForecast()
+            await viewModel.loadForecast(city)
+            await viewModel.addCityToRecent(city)
         }
     }
 
@@ -33,7 +34,7 @@ struct ForecastDetailsView: View {
             Text("Current Weather Forecast:")
                 .font(.largeTitle)
                 .padding()
-                .navigationTitle(forecast.name)
+                .navigationTitle(city.name)
             VStack(alignment: .center) {
                 Text(forecast.weather.first?.main ?? "Unknown Weather")
                     .font(.title)
@@ -58,7 +59,7 @@ struct ForecastDetailsView: View {
                     Text("\(forecast.feels_like) ºC")
                 }
                 HStack{
-                    Text("Temorature Min")
+                    Text("Temperature Min")
                     Spacer()
                     Text("\(forecast.temp_min) ºC")
                 }
@@ -94,6 +95,12 @@ struct ForecastDetailsView: View {
 }
 
 #Preview {
-    let viewModel = ForecastDetailsViewModel()
-    ForecastDetailsView(viewModel: viewModel)
+    let city = City(
+        name: "San Francisco",
+        lat: 37.7749,
+        lon: -122.4194,
+        country: "US"
+    )
+    let viewModel = ForecastDetailsViewModel(service: MockWeatherService())
+    ForecastDetailsView(city: city, viewModel: viewModel)
 }

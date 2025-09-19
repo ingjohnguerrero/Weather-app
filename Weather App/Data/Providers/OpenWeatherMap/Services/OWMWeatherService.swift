@@ -27,10 +27,9 @@ class OWMWeatherService: WeatherService {
     private let baseURL: String = "https://api.openweathermap.org/data/2.5"
     private let mapper: OpenWeatherForecastMapper = OpenWeatherForecastMapper()
 
-
     init() {}
 
-    func fetchForecast(forLat lat: Double, lon: Double) async throws -> Forecast {
+    func fetchForecast(forLat lat: Float, lon: Float) async throws -> Forecast {
         let url = URL(string: "\(baseURL)/weather?lat=\(lat)&lon=\(lon)&appid=\(apiKey)&units=metric")!
         let (data, response) = try await URLSession.shared.data(
             from: url,
