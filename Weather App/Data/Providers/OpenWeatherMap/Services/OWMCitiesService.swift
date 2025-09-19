@@ -24,7 +24,6 @@ class OWMCitiesService: CitiesService {
         return key
     }()
     private let baseURL: String = "https://api.openweathermap.org"
-    private let mapper: OpenWeatherCityGeoCodingMapper = OpenWeatherCityGeoCodingMapper()
 
     init() {}
 
@@ -44,6 +43,6 @@ class OWMCitiesService: CitiesService {
             [OpenWeatherCityGeoCodingDTO].self,
             from: data
         )
-        return citiesDTO.map{ mapper.map($0) }
+        return citiesDTO.map{ $0.mapToCity() }
     }
 }

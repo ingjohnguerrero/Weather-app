@@ -8,7 +8,7 @@
 import Foundation
 
 struct City: Identifiable {
-    var id: UUID
+    var id: String { "\(name)-\(country)-\(lat)-\(lon)" }
     let name: String
     let lat: Float
     let lon: Float
@@ -16,14 +16,12 @@ struct City: Identifiable {
     let state: String?
 
     init(
-        id: UUID = UUID(),
         name: String,
         lat: Float,
         lon: Float,
         country: String,
         state: String? = nil
     ) {
-        self.id = id
         self.name = name
         self.lat = lat
         self.lon = lon

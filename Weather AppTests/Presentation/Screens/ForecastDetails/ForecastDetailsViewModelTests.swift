@@ -11,15 +11,25 @@ import XCTest
 @MainActor
 final class ForecastDetailsViewModelTests: XCTestCase {
     var sut: ForecastDetailsViewModel!
+    let city = City(
+        name: "San Francisco",
+        lat: 37.7749,
+        lon: -122.4194,
+        country: "US"
+    )
 
     func testInitialState() async {
-        sut = ForecastDetailsViewModel()
+        sut = ForecastDetailsViewModel(
+            service: MockWeatherService()
+        )
         XCTAssertEqual(sut.state, ForecastDetailsState.idle)
     }
 
     func testLoadForecastWithReturnsForecast() async {
-        sut = ForecastDetailsViewModel()
-        await sut.loadForecast()
+        sut = ForecastDetailsViewModel(
+            service: MockWeatherService()
+        )
+        await sut.loadForecast(city)
         if case .success(let forecast) = sut.state {
             XCTAssertFalse(forecast.name.isEmpty)
         } else {
@@ -32,7 +42,7 @@ final class ForecastDetailsViewModelTests: XCTestCase {
         sut = ForecastDetailsViewModel(
             service: MockWeatherService(returnsError: true)
         )
-        await sut.loadForecast()
+        await sut.loadForecast(city)
         if case .error(let errorMessage) = sut.state {
             XCTAssertFalse(errorMessage.isEmpty, "Expected an error message but got empty string")
         } else {

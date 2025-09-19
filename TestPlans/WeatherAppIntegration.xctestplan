@@ -14,12 +14,20 @@
   "testTargets" : [
     {
       "skippedTests" : [
+        "CitiesRepositoryTests",
+        "CitiesRepositoryTests\/testInitialization()",
+        "CitiesRepositoryTests\/testRetrieveRecentCities()",
+        "CitiesRepositoryTests\/testSaveSelectedCityStoreItInRecentCities()",
         "ForecastDetailsViewModelTests",
         "ForecastDetailsViewModelTests\/testInitialState()",
         "ForecastDetailsViewModelTests\/testLoadForecastWithError()",
         "ForecastDetailsViewModelTests\/testLoadForecastWithReturnsForecast()",
         "ForecastTests",
         "ForecastTests\/testInitInstanceIsNotNil()",
+        "HomeViewModelTests",
+        "HomeViewModelTests\/testInitialState()",
+        "HomeViewModelTests\/testLookupCities()",
+        "HomeViewModelTests\/testLookupCitiesError()",
         "JSONLoaderTests",
         "MockCitiesServiceTests",
         "MockCitiesServiceTests\/testFetchCities()",
@@ -36,6 +44,10 @@
         "OpenWeatherForecastDTOTests\/testDecodeObjectFromJSONStringReturnsValidDTO()",
         "OpenWeatherForecastMapperTests",
         "OpenWeatherForecastMapperTests\/testForecastMapperReturnsValidForecast()",
+        "SwiftDataCitiesServiceTests",
+        "SwiftDataCitiesServiceTests\/testAllItemsDeletionResultsInEmptyRecentCities()",
+        "SwiftDataCitiesServiceTests\/testInitialization()",
+        "SwiftDataCitiesServiceTests\/testSaveCityIncrementsRecentCitiesCount()",
         "Weather_AppTests",
         "Weather_AppTests\/testExample()",
         "Weather_AppTests\/testPerformanceExample()"

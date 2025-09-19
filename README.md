@@ -10,7 +10,7 @@ This project is a Swift practice application that demonstrates how to fetch and 
 
 | **Mobile Interface** |
 |------------|
-|<img src="https://github.com/user-attachments/assets/0538b7ee-ee3e-4261-82e4-1f083ad145c6" alt="iPhone 16 Pro Simulator Screenshot" width="300"><br><sub>iPhone 16 Pro Simulator View</sub> |
+|<video src="https://github.com/user-attachments/assets/904bdbae-6147-4a30-86ae-3cee3349d709" controls width="500"></video><br><sub>iPhone 17 Pro Simulator</sub> |
 
 ## Getting Started
 

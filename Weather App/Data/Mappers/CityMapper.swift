@@ -6,6 +6,5 @@
 //
 
 protocol CityMapper {
-    associatedtype DTO
-    func map(_ dto: DTO) -> City
+    func mapToCity() -> City
 }

@@ -26,6 +26,7 @@ struct HomeView: View {
                         Text("Error fetching cities: \(description)")
                 }
             }
+            .navigationTitle("Weather by city!")
         }
         .searchable(text: $searchText, prompt: "City name")
         .onChange(of: searchText) { oldValue, newValue in
@@ -33,13 +34,16 @@ struct HomeView: View {
                 await viewModel.lookForCities(query: newValue)
             }
         }
+        .task {
+            await viewModel.onStart()
+        }
     }
 
     @ViewBuilder
     private func citiesList(_ cities: [City]) -> some View {
         List(cities) { city in
             NavigationLink(
-                destination: ForecastDetailsView(lat: city.lat, lon: city.lon)
+                destination: ForecastDetailsView(city: city)
             ) {
                 VStack {
                     Text("\(city.name), \(city.country)")

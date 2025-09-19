@@ -26,8 +26,6 @@ actor MockCitiesService: CitiesService {
             as: [OpenWeatherCityGeoCodingDTO].self
         )
 
-        return citiesDTO.map { cityDTO in
-            OpenWeatherCityGeoCodingMapper().map(cityDTO)
-        }
+        return citiesDTO.map { $0.mapToCity() }
     }
 }

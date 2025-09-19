@@ -19,7 +19,7 @@ final class JSONLoaderTests: XCTestCase {
 
     func testParseMockFileJsonFileReturnsDTO() throws {
         let dto: OpenWeatherForecastDTO = try JSONLoader.loadMock(
-            .forecastByLatLngMock,
+            .forecastByLatLonMock,
             as: OpenWeatherForecastDTO.self
         )
         XCTAssertEqual(dto.name, "Zocca")
