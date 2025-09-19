@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ForecastDetailsView: View {
-    let lat: Float
-    let lon: Float
+    let city: City
     @State var viewModel = ForecastDetailsViewModel()
     var body: some View {
         ScrollView {
@@ -24,7 +23,8 @@ struct ForecastDetailsView: View {
             }
         }
         .task {
-            await viewModel.loadForecast(lat: lat, lon: lon)
+            await viewModel.loadForecast(city)
+            await viewModel.addCityToRecent(city)
         }
     }
 
@@ -34,7 +34,7 @@ struct ForecastDetailsView: View {
             Text("Current Weather Forecast:")
                 .font(.largeTitle)
                 .padding()
-                .navigationTitle(forecast.name)
+                .navigationTitle(city.name)
             VStack(alignment: .center) {
                 Text(forecast.weather.first?.main ?? "Unknown Weather")
                     .font(.title)
@@ -95,6 +95,12 @@ struct ForecastDetailsView: View {
 }
 
 #Preview {
+    let city = City(
+        name: "San Francisco",
+        lat: 37.7749,
+        lon: -122.4194,
+        country: "US"
+    )
     let viewModel = ForecastDetailsViewModel(service: MockWeatherService())
-    ForecastDetailsView(lat: 0.0, lon: 0.0, viewModel: viewModel)
+    ForecastDetailsView(city: city, viewModel: viewModel)
 }

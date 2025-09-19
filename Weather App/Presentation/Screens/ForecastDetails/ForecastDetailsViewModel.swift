@@ -32,21 +32,34 @@ enum ForecastDetailsState: Equatable{
 class ForecastDetailsViewModel {
     private(set) var state: ForecastDetailsState = .idle
     @ObservationIgnored private let service: WeatherService!
+    @ObservationIgnored private let dataStore: CitiesDataStore!
 
-    init(service: WeatherService = OWMWeatherService()) {
+    init(
+        service: WeatherService = OWMWeatherService(),
+        dataStore: CitiesDataStore = try! SwiftDataCitiesDataStore()
+    ) {
         self.service = service
+        self.dataStore = dataStore
     }
 
-    func loadForecast(lat: Float, lon: Float) async {
+    func loadForecast(_ city: City) async {
         state = .loading
         do {
             let forecast = try await service.fetchForecast(
-                forLat: lat,
-                lon: lon
+                forLat: city.lat,
+                lon: city.lon
             )
             state = .success(forecast)
         } catch let error {
             state = .error(error.localizedDescription)
+        }
+    }
+
+    func addCityToRecent(_ city: City) async {
+        do {
+            try await dataStore.save(city: city)
+        } catch {
+            state = .error("Failed to save city: \(error.localizedDescription)")
         }
     }
 }

@@ -12,11 +12,11 @@ final class CitiesRepositoryTests: XCTestCase {
 
     private var sut: CitiesRepository!
     private var service: CitiesService!
-    private var dataStore: SwiftDataCitiesService!
+    private var dataStore: SwiftDataCitiesDataStore!
 
     override func setUpWithError() throws {
         service = MockCitiesService()
-        dataStore = try SwiftDataCitiesService(inMemory: true)
+        dataStore = try SwiftDataCitiesDataStore(inMemory: true)
         sut = CitiesRepository(
             service: service,
             dataStore: dataStore
@@ -51,5 +51,11 @@ final class CitiesRepositoryTests: XCTestCase {
         let recentCities = try await sut.recentCities()
         let lastRecentCity = try XCTUnwrap(recentCities.first)
         XCTAssertEqual(city.name, lastRecentCity.name)
+    }
+
+    func testFetchingCitiesReturnsCitiesFromService() async throws {
+        let cities = try await service.fetchCities(forName: "San Francisco")
+        let fetchedCities = try await sut.fetchCities(forName: "San Francisco")
+        XCTAssertEqual(cities.count, fetchedCities.count)
     }
 }

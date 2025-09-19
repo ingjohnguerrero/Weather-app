@@ -10,20 +10,23 @@ import SwiftData
 
 @Model
 final class CityDataModel {
-    var id: UUID
+    var id: String
     var name: String
     var lat: Float
     var lon: Float
     var country: String
     var state: String?
+    // Track insertion time to preserve insertion order
+    var createdAt: Date
 
     init(
-        id: UUID,
+        id: String,
         name: String,
         lat: Float,
         lon: Float,
         country: String,
-        state: String? = nil
+        state: String? = nil,
+        createdAt: Date = Date()
     ) {
         self.id = id
         self.name = name
@@ -31,6 +34,7 @@ final class CityDataModel {
         self.lon = lon
         self.country = country
         self.state = state
+        self.createdAt = createdAt
     }
 }
 
@@ -45,3 +49,4 @@ extension CityDataModel: CityMapper {
         )
     }
 }
+

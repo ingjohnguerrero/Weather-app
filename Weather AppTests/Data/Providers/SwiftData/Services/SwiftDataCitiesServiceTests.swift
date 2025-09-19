@@ -11,15 +11,18 @@ import XCTest
 @MainActor
 final class SwiftDataCitiesServiceTests: XCTestCase {
 
-    var sut: SwiftDataCitiesService!
+    var sut: SwiftDataCitiesDataStore!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        sut = try SwiftDataCitiesService(inMemory: true)
+        sut = try SwiftDataCitiesDataStore(inMemory: true)
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        Task {
+            try? await sut.deleteAllCities()
+        }
     }
 
     func testInitialization() {
@@ -57,5 +60,36 @@ final class SwiftDataCitiesServiceTests: XCTestCase {
 
         recentCities = try await sut.recentCities()
         XCTAssertTrue(recentCities.isEmpty)
+    }
+
+    func testSavingCityWithDuplicateNameDoesNotAddAnotherCity() async throws{
+        let city = City(
+            name: "San Francisco",
+            lat: 37.7749,
+            lon: -122.4194,
+            country: "US"
+        )
+        
+        try? await sut.save(city: city)
+        try? await sut.save(city: city)
+
+        let cities = try await sut.recentCities()
+        XCTAssertEqual(cities.count, 1)
+    }
+
+    func testRecentCitiesOnSavingIsNotMoreThanLimit() async throws{
+        for index in 0...sut.recentCitiesLimit {
+            let city = City(
+                name: "San Francisco\(index)",
+                lat: 37.7749,
+                lon: -122.4194,
+                country: "US"
+            )
+
+            try? await sut.save(city: city)
+        }
+
+        let cities = try await sut.recentCities()
+        XCTAssertEqual(cities.count, sut.recentCitiesLimit)
     }
 }

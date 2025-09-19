@@ -7,11 +7,15 @@
 
 actor CitiesRepository {
     private let service: CitiesService
-    private let dataStore: SwiftDataCitiesService
+    private let dataStore: CitiesDataStore
 
-    init(service: CitiesService, dataStore: SwiftDataCitiesService) {
+    init(service: CitiesService, dataStore: CitiesDataStore) {
         self.service = service
         self.dataStore = dataStore
+    }
+
+    func fetchCities(forName: String) async throws -> [City] {
+        try await service.fetchCities(forName: forName)
     }
 
     func recentCities() async throws -> [City] {
